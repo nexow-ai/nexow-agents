@@ -12,8 +12,8 @@ from pydantic import BaseModel, Field
 # ──────────────────────────────────────────────────────────
 
 class AgentType(str, Enum):
-    SYSTEMATIC = "systematic"
-    DISCRETIONARY = "discretionary"
+    BOT = "bot"
+    AGENT = "agent"
 
 
 class LLMProvider(str, Enum):
@@ -86,7 +86,7 @@ class ExitConfig(BaseModel):
 class AgentGenerationResult(BaseModel):
     """Result of the AI agent factory: the generated config + metadata."""
 
-    agent_type: AgentType = Field(description="'systematic' or 'discretionary'")
+    agent_type: AgentType = Field(description="'bot' or 'agent'")
     name: str = Field(description="Generated name for the agent")
     description: str = Field(description="Human-readable description of the strategy")
     config: dict = Field(description="The full strategy config as JSON (portfolio, rules, exit)")

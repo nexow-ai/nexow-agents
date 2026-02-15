@@ -6,8 +6,8 @@ from typing import Any
 
 import structlog
 
-from nexow.agents.base import AgentStrategy, Signal, SignalType
-from nexow.broker.models import Candle
+from nexow_agents.base import AgentStrategy, Signal, SignalType
+from nexow_shared.broker.models import Candle
 
 logger = structlog.get_logger(__name__)
 
@@ -41,7 +41,7 @@ class DiscretionaryAgent(AgentStrategy):
         instrument = candles[0].instrument if candles else "UNKNOWN"
 
         try:
-            from nexow.ai.reasoning import run_reasoning_chain
+            from nexow_agents.ai.reasoning import run_reasoning_chain
 
             market_context = self._build_market_context(candles, current_price)
             result = await run_reasoning_chain(

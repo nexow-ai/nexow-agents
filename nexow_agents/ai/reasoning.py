@@ -9,8 +9,8 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END, StateGraph
 
-from nexow.ai.tools import gather_external_context
-from nexow.config import settings
+from nexow_agents.ai.tools import gather_external_context
+from nexow_agents.config import settings
 
 logger = structlog.get_logger(__name__)
 

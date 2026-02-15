@@ -6,9 +6,9 @@ from typing import Any
 
 import structlog
 
-from nexow.agents.base import AgentStrategy, Signal, SignalType
-from nexow.broker.models import Candle
-from nexow.rules.interpreter import MarketSnapshot, evaluate_rules
+from nexow_agents.base import AgentStrategy, Signal, SignalType
+from nexow_shared.broker.models import Candle
+from nexow_shared.rules.interpreter import MarketSnapshot, evaluate_rules
 
 logger = structlog.get_logger(__name__)
 

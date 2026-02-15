@@ -6,10 +6,10 @@ from typing import Any
 
 import structlog
 
-from nexow.agents.base import AgentStrategy, Signal
-from nexow.agents.discretionary import DiscretionaryAgent
-from nexow.agents.systematic import SystematicAgent
-from nexow.broker.models import Candle
+from nexow_agents.base import AgentStrategy, Signal
+from nexow_agents.discretionary import DiscretionaryAgent
+from nexow_agents.systematic import SystematicAgent
+from nexow_shared.broker.models import Candle
 
 logger = structlog.get_logger(__name__)
 

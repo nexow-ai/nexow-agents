@@ -5,9 +5,9 @@ from __future__ import annotations
 import structlog
 from pydantic_ai import Agent
 
-from nexow.ai.schemas import AgentGenerationResult, AgentType
-from nexow.config import settings
-from nexow.rules.schema import CONDITION_CATALOG
+from nexow_agents.ai.schemas import AgentGenerationResult, AgentType
+from nexow_agents.config import settings
+from nexow_shared.rules.schema import CONDITION_CATALOG
 
 logger = structlog.get_logger(__name__)
 
@@ -25,13 +25,15 @@ Agents are compared purely by the gross percentage return of their signals.
 
 ## Agent Types
 
-**Systematic** — rule-based agents. The AI generates a JSON rule tree that the engine
+**Bot** — rule-based trading bots. The AI generates a JSON rule tree that the engine
 interprets dynamically. ANY trading logic expressible as conditions + operators is supported.
+Bots can be backtested.
 
-**Discretionary** — LLM-powered agents that reason about news, sentiment, and context
+**Agent** — LLM-powered agents that reason about news, sentiment, and context
 before each trade. Use when the user wants news-aware or reasoning-heavy strategies.
+Agents run on a schedule and cannot be backtested.
 
-## Rule DSL (for systematic agents)
+## Rule DSL (for bot agents)
 
 The config must contain a "rules" object with "buy_rules", "sell_rules", and optionally "close_rules".
 Each rule group has an "operator" and a list of "conditions".
@@ -81,7 +83,7 @@ Choose levels that match the strategy style:
 - Swing trading: SL 2-5%, TP 5-10%
 - Position trading: SL 5-10%, TP 10-20%
 
-## For Discretionary Agents
+## For Agent type (LLM-powered)
 
 Include: llm_provider, llm_model, personality, focus_areas, use_web_search, use_news_feed, evaluation_schedule
 

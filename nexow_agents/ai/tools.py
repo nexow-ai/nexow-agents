@@ -7,7 +7,7 @@ from typing import Any
 import httpx
 import structlog
 
-from nexow.config import settings
+from nexow_agents.config import settings
 
 logger = structlog.get_logger(__name__)
 

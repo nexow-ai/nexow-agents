@@ -1,24 +1,11 @@
 """FastAPI application for nexow-agents service."""
 
 from fastapi import FastAPI
-from pydantic_settings import BaseSettings
 import structlog
 
+from nexow_agents.config import settings
+
 logger = structlog.get_logger(__name__)
-
-
-class Settings(BaseSettings):
-    """Application settings."""
-    port: int = 8002
-    environment: str = "development"
-    
-    # LLM API Keys
-    openai_api_key: str = ""
-    anthropic_api_key: str = ""
-    tavily_api_key: str = ""
-
-
-settings = Settings()
 
 app = FastAPI(
     title="Nexow Agents Service",

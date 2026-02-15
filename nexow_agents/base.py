@@ -8,7 +8,7 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from nexow.broker.models import Candle
+from nexow_shared.broker.models import Candle
 
 
 class SignalType(str, Enum):
